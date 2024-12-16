@@ -88,17 +88,6 @@ var layout = {
 };
 Plotly.newPlot("fps-chart", [trace1], layout);
 
-// function updateChart() {
-//   var now = new Date().getTime();
-//   var newxLayout = {
-//     xaxis: {
-//       range: [now, now + 1000],
-//     },
-//   };
-//   Plotly.relayout("fps-chart", newxLayout);
-// }
-// var initChart= setInterval(updateChart, 100);
-
 function clear_res() {
   Plotly.newPlot("fps-chart", [trace1], layout);
   videoElement_result.src = "";
