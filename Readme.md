@@ -64,3 +64,7 @@ The application relies on the following Python libraries:
 - `gevent`: Library for asynchronous networking.
 
 These dependencies are listed in the `requirements.txt` file.
+
+## FAQ
+
+WeChat：Debu_cat
