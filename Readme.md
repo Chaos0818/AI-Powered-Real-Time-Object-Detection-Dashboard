@@ -1,5 +1,7 @@
 # AI-Powered Real-Time Object Detection Dashboard
 
+WKU 2024 Fall Zhang Dinggen CPS5745 project
+
 This repository contains a set of Python scripts for object detection and heatmap generation using the YOLO (You Only Look Once) model. The application is built with Flask for web interaction and SocketIO for real-time video streaming.
 
 ## Table of Contents
