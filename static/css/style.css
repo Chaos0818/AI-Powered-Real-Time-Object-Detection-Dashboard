@@ -1,0 +1,71 @@
+.split-screen {
+  display: flex;
+}
+
+.split-screen > div {
+  flex: 1;
+  padding: 20px;
+}
+
+.split-screen > div:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+
+.media-frame {
+  width: 100%;
+  background-color: #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.options {
+  margin-bottom: 20px;
+}
+
+.options input {
+  margin-right: 10px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.buttons button {
+  margin-right: 10px;
+}
+
+.fps-chart {
+  height: 150px;
+  background-color: #f8f9fa;
+}
+
+/*  */
+body {
+  background-color: #f8f9fa;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+@keyframes move-background {
+  0% {
+      background-position: 0 0;
+  }
+  100% {
+      background-position: 100% 100%;
+  }
+}

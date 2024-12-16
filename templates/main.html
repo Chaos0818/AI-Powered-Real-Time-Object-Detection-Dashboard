@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Real-Time Object Detection Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/plotly-latest.min.js') }}"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand text-center w-100" href="#">AI-Powered Real-Time Object Detection Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Origin</h2>
+                <div class="media-frame" id="origin-media">
+                    <!-- Video or Image will be displayed here -->
+                    <img id="videoElement_origin">
+                </div>
+                <h2>Param setting</h2>
+                <div class="options">
+                    <label>Inference Device:</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inference" value="cuda">
+                        <label class="form-check-label">GPU</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inference" value="cpu">
+                        <label class="form-check-label">CPU</label>
+                    </div>
+                </div>
+                <div class="options">
+                    <label>Model Size:</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="model" value="n">
+                        <label class="form-check-label">Nano</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="model" value="s">
+                        <label class="form-check-label">Small</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="model" value="m">
+                        <label class="form-check-label">Medium</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="model" value="l">
+                        <label class="form-check-label">Large</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="model" value="x">
+                        <label class="form-check-label">Extra-Large</label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <label>Data Source:</label><br>
+                    <input type="file" id="fileInput" style="display: none;">
+                    <!-- <button class="btn btn-primary uploadButton" onclick="set_source('video')">Upload Video</button>
+                    <button class="btn btn-primary uploadButton" onclick="set_source('image')">Upload Image</button> -->
+                    <button class="btn btn-primary" id="openCameraStream" onclick="set_source('stream')">Camera
+                        Stream</button>
+                </div>
+                <div class="buttons">
+                    <label>Select Source: <span id="now_source">{{data_source}}</span></label>
+                    <br>
+                    <button class="btn btn-primary" id="startDtection" onclick="startProcess('detection')">Start
+                        Detection</button>
+                    <button class="btn btn-primary" id="heatMap" onclick="startProcess('heatmap')">Heat Map</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Result <button class="btn btn-primary">Clean</button></h2>
+                <div class="media-frame" id="result-media">
+                    <img id="videoElement_result">
+                </div>
+                <div>
+                    <h3>Inference FPS: <span id="fps-value">0</span></h3>
+                    <div class="fps-chart" id="fps-chart" style="height:300px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/interactive.js') }}"></script>
+</body>
+
+<footer class="bg-light text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 Copyright:
+        <a class="text-dark" href="">WKU Zhang Dinggen, Yang Le</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+</html>
