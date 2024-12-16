@@ -1,0 +1,17 @@
+# OpenCV
+opencv-python
+
+# Ultralytics YOLO
+ultralytics
+
+# Flask for web application
+Flask
+
+# Flask-SocketIO for WebSocket communication
+Flask-SocketIO
+
+# NumPy for numerical calculations
+numpy
+
+# Gevent for asynchronous networking
+gevent
